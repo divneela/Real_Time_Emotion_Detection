@@ -1,0 +1,2 @@
+# Real_Time_Emotion_Detection
+Real_Time_Emotion_Detection using Apache Kafka
