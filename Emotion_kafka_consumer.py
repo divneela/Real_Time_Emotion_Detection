@@ -1,4 +1,5 @@
 from kafka import KafkaConsumer
+import json
 
 # Set up the Kafka consumer
 consumer = KafkaConsumer(
@@ -34,10 +35,22 @@ for message in consumer:
     if message.offset > last_offset or last_offset ==0 :
         print(f"Received message: {message.value.decode('utf-8')}, Offset: {message.offset}")
         
+        json_string = message.value.decode('utf-8')
+        data = json.loads(json_string)
+        tweet = data.get('value', None)
+        print(tweet)
+        
+        
         try:
     # Open the file for writing
+            with open('Tweets_Input/tweets.txt', 'a') as file:
+                # Append the content to a new line
+                file.write(tweet + '\n')
             with open('offset/external_offset.txt', 'w') as file:
                 file.write(str(message.offset))
+            
+
+            
 
 
         except Exception as e:
