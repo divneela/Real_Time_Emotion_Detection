@@ -20,7 +20,7 @@ try:
         last_offset = int(file_content)
 
         # Print the integer value
-        print("Integer stored in the file:", last_offset)
+        print("Last processed offset:", last_offset)
 
 except FileNotFoundError:
     print("File not found. Please make sure the file exists.")
@@ -45,7 +45,8 @@ for message in consumer:
     # Open the file for writing
             with open('Tweets_Input/tweets.txt', 'a') as file:
                 # Append the content to a new line
-                file.write(tweet + '\n')
+                file.write('\"'+tweet + '\"' + '\n')
+                
             with open('offset/external_offset.txt', 'w') as file:
                 file.write(str(message.offset))
             
