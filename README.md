@@ -1,4 +1,4 @@
-# Real_Time_Emotion_Detection
+# Real Time Emotion Detection
 Real_Time_Emotion_Detection using Apache Kafka
 
 KAFKA SETUP:
